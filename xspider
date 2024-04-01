@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# time=`date "+%Y.%m.%d_%H:%M:%S.%3N"`
+date=`date "+%Y_%m_%d"`
+path=~/Dev/Projects/django/aim/scrape
+
+SECONDS=0
+
+# activate venv
+source $path/venv/bin/activate
+   
+# declare spider variable
+declare -a spiders=(
+                    "webstager"
+                    "lynxdigital"    
+                    "nabthat"    
+                    "flexdealer"  
+                    "autojini"    
+                    "rehash"    
+                    "edealer"    
+                    "sm360"    
+                    "wpastra"    
+                    "tadvantage"    
+                    "convertus"
+                    "dealersiteplus"    
+                    "dealerdotcom" 
+                    "foxdealer"
+                    "reynolds"
+                    "d2cmedia"
+                   )
+    
+for spider in "${spiders[@]}"
+do   
+   python3 $path/webscraping/runspider.py -s $spider >> $path/logs/$spider"_"$date.log
+done
+
+duration=$SECONDS
+echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
+
+## Notes:
+# If each line
+# python3 $scrape_dir/webscraping/runspider.py -s webstager 
+# python3 $scrape_dir/webscraping/runspider.py -s lynxdigital 
+# python3 $scrape_dir/webscraping/runspider.py -s nabthat 
+# ...
+
+# you can add log however, this is not printing out on the terminal, if you want to print out, remove "2>$1"
+# >> $path/logs/$spider"_"$date.log
+

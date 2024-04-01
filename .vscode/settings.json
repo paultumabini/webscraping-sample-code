@@ -1,0 +1,23 @@
+{
+  // "editor.tabSize": 8,
+  // "editor.insertSpaces": true,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.emmet"
+  },
+
+  /* detecting unused inmports   */
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": ["--enable=W0611"],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+
+  "files.exclude": {
+    ".vscode": true
+  },
+  "editor.tabSize": 4,
+  "editor.detectIndentation": false
+}
